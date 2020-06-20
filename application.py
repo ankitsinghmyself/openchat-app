@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user,current_user,login_required,logout_user
 
 from wtForm import * # this is a local import 
@@ -36,6 +36,7 @@ def index():
         user = User(username=username, password=hash_pswd)
         db.session.add(user)
         db.session.commit()
+        flash("Registered successfully. Please login.","success")
         return redirect(url_for('login'))
 
     return render_template("index.html", form=reg_form)
@@ -59,7 +60,8 @@ def login():
 # @login_required
 def openchat():
     if not current_user.is_authenticated:
-            return "Please login before chat"
+        flash("Please login.","danger")
+        return redirect(url_for('login'))
 
     return "user login in chat"
 
@@ -67,7 +69,8 @@ def openchat():
 def logout():
 
     logout_user()
-    return "logedout"
+    flash("You have successfully logout.","success")
+    return redirect(url_for('login'))
     
 
 if __name__ == "__main__":
