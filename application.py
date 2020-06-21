@@ -9,11 +9,10 @@ from models import * # this is a local import
 
 # Config App
 app = Flask(__name__)
-#app.secret_key = os.environ.get('SECRET')
-app.secret_key = 'SECRET'
+app.secret_key = os.environ.get('SECRET')
+#app.secret_key = 'SECRET'
 #config db
-#app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
-app.config['SQLALCHEMY_DATABASE_URI']='postgres://abnmpaqprcrhne:07e59ceaec54185c8c85ee04be039025810164a07403aad83053c7be2b278066@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d9ue9spbrno6dt'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 db = SQLAlchemy(app)
 
 #Initialize Flas-SockectIO
