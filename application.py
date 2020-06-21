@@ -2,17 +2,17 @@ from time import localtime, strftime
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user,current_user,login_required,logout_user
 from flask_socketio import SocketIO,send,emit, join_room, leave_room
-
+import os
 from wtForm import * # this is a local import 
 from models import * # this is a local import
 
 
 # Config App
 app = Flask(__name__)
-app.secret_key = 'replace later'
+app.secret_key = os.environ.get('SECRET')
 
 #config db
-app.config['SQLALCHEMY_DATABASE_URI']='postgres://abnmpaqprcrhne:07e59ceaec54185c8c85ee04be039025810164a07403aad83053c7be2b278066@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d9ue9spbrno6dt'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 
@@ -101,4 +101,5 @@ def leave(data):
     + data['room'] + "room" }, room=data['room'])
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    #socketio.run(app, debug=True)
+    app.run()
