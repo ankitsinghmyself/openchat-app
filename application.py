@@ -1,4 +1,4 @@
-from time import localtime, strftime, datetime
+from time import localtime, strftime, gmtime
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user,current_user,login_required,logout_user
 from flask_socketio import SocketIO,send,emit, join_room, leave_room
@@ -6,13 +6,6 @@ import os
 from wtForm import * # this is a local import 
 from models import * # this is a local import
 
-#time variables
-utc_tz= tz.gettz('UTC')
-india_tz= tz.gettz('Asia/Kolkata')
-utc = datetime.strptime(date_string[:date_string.rindex('-')], '%m-%d T%H:%M%p')
-utc = utc.replace(tzinfo=utc_tz)
-india_time_with_offset = utc.astimezone(india_tz)
-india_time_without_offset = india_time_with_offset.replace(tzinfo=None)
 
 # Config App
 app = Flask(__name__)
@@ -89,7 +82,7 @@ def logout():
 def message(data):
     #print(f"\n\n{data}\n\n")
     #print(f"\n\n\n\n{current_user.username}\n\n\n\n")
-    send({'msg': data['msg'], 'username': data['username'],'time_stamp': india_time_without_offset)}, room=data['room'])
+    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', gmtime())}, room=data['room'])
     #print(f"\n\n\n\n\n\n{current_user.username}\n\n\n\n")
 
 @socketio.on('join')
