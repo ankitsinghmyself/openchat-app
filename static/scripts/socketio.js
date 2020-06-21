@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   var socket = io();
   //setting of default room
-  let room = "Lounge";
-  joinRoom("Lounge");
+  let room = "General";
+  joinRoom("General");
 
   //dispaly incomming msg
   socket.on('message', data => {
