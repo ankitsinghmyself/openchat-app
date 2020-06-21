@@ -66,9 +66,9 @@ def login():
 @app.route('/openchat', methods=['GET','POST'])
 # @login_required
 def openchat():
-    # if not current_user.is_authenticated:
-    #     flash("Please login.","danger")
-    #     return redirect(url_for('login'))
+    if not current_user.is_authenticated:
+        flash("Please login.","danger")
+        return redirect(url_for('login'))
 
     return render_template('openchat.html', username = current_user.username, rooms=ROOMS)
 
