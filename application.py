@@ -1,6 +1,4 @@
-from time import localtime, strftime, gmtime
-from datetime import datetime
-
+from time import localtime, strftime
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user,current_user,login_required,logout_user
 from flask_socketio import SocketIO,send,emit, join_room, leave_room
@@ -8,15 +6,14 @@ import os
 from wtForm import * # this is a local import 
 from models import * # this is a local import
 
-#config time
-now = datetime.now()
 
 # Config App
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET')
-#app.secret_key = 'SECRET'
+#app.secret_key = os.environ.get('SECRET')
+app.secret_key = 'SECRET'
 #config db
-app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+#app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://abnmpaqprcrhne:07e59ceaec54185c8c85ee04be039025810164a07403aad83053c7be2b278066@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d9ue9spbrno6dt'
 db = SQLAlchemy(app)
 
 #Initialize Flas-SockectIO
@@ -86,7 +83,7 @@ def logout():
 def message(data):
     #print(f"\n\n{data}\n\n")
     #print(f"\n\n\n\n{current_user.username}\n\n\n\n")
-    send({'msg': data['msg'], 'username': data['username'],'time_stamp': now.strftime('%b-%d %I:%M%p', gmtime())}, room=data['room'])
+    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', localtime())}, room=data['room'])
     #print(f"\n\n\n\n\n\n{current_user.username}\n\n\n\n")
 
 @socketio.on('join')
