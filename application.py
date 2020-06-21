@@ -102,5 +102,5 @@ def leave(data):
     + data['room'] + "room" }, room=data['room'])
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
-    #app.run()
+    #socketio.run(app, debug=True)
+    app.run()
