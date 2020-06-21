@@ -83,7 +83,7 @@ def logout():
 def message(data):
     #print(f"\n\n{data}\n\n")
     #print(f"\n\n\n\n{current_user.username}\n\n\n\n")
-    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', localtime())}, room=data['room'])
+    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', localtime(10.5))}, room=data['room'])
     #print(f"\n\n\n\n\n\n{current_user.username}\n\n\n\n")
 
 @socketio.on('join')
