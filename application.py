@@ -13,6 +13,7 @@ app.secret_key = os.environ.get('SECRET')
 #app.secret_key = 'SECRET'
 #config db
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+#app.config['SQLALCHEMY_DATABASE_URI']='postgres://abnmpaqprcrhne:07e59ceaec54185c8c85ee04be039025810164a07403aad83053c7be2b278066@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d9ue9spbrno6dt'
 db = SQLAlchemy(app)
 
 #Initialize Flas-SockectIO
@@ -100,5 +101,5 @@ def leave(data):
     + data['room'] + "room" }, room=data['room'])
 
 if __name__ == "__main__":
-    #socketio.run(app, debug=True)
-    app.run()
+    socketio.run(app, debug=True)
+    #app.run()
