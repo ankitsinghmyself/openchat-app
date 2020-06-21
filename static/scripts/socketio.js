@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //setting of default room
   let room = "Lounge";
   joinRoom("Lounge");
-
+  deleteAllCookies()
   //dispaly incomming msg
   socket.on('message', data => {
     const p = document.createElement('p');
@@ -117,10 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
     p.innerHTML = msg;
     document.querySelector('#display-message-section').append(p);
   }
-  
+
   // Scroll chat window down
   function scrollDownChatWindow() {
     const chatWindow = document.querySelector("#display-message-section");
     chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+function deleteAllCookies() {
+  var cookies = document.cookie.split(";");
+
+  for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
 }
 });
