@@ -1,4 +1,4 @@
-from time import localtime, strftime
+from time import localtime, strftime, gmtime
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user,current_user,login_required,logout_user
 from flask_socketio import SocketIO,send,emit, join_room, leave_room
@@ -83,7 +83,7 @@ def logout():
 def message(data):
     #print(f"\n\n{data}\n\n")
     #print(f"\n\n\n\n{current_user.username}\n\n\n\n")
-    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', localtime(10.5))}, room=data['room'])
+    send({'msg': data['msg'], 'username': data['username'],'time_stamp': strftime('%b-%d %I:%M%p', gmtime())}, room=data['room'])
     #print(f"\n\n\n\n\n\n{current_user.username}\n\n\n\n")
 
 @socketio.on('join')
