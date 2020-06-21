@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
   //leave room
   function leaveRoom(room) {
     socket.emit('leave', { 'username': username, 'room': room });
+    document.querySelectorAll('.select-room').forEach(p => {
+      p.style.color = "black";
+  });
   }
 
   //join room
