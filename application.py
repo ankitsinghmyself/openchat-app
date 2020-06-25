@@ -17,6 +17,8 @@ app.secret_key = os.environ.get('SECRET')
 app.config['SQLALCHEMY_DATABASE_URI']='postgres://abnmpaqprcrhne:07e59ceaec54185c8c85ee04be039025810164a07403aad83053c7be2b278066@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d9ue9spbrno6dt'
 db = SQLAlchemy(app)
 
+rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
+
 #Initialize Flas-SockectIO
 socketio = SocketIO(app)
 socketio.init_app(app)
@@ -32,6 +34,8 @@ def load_user(id):
 
 @app.route('/', methods=['GET','POST'])
 def index():
+    template_path=rel('templates')
+    static_path=rel('static')
 
     #update db if validation success
     reg_form = RegistartionForm()

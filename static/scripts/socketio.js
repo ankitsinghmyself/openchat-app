@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //setting of default room
   let room = "General";
   joinRoom("General");
-
   //dispaly incomming msg
   socket.on('message', data => {
     const p = document.createElement('p');
