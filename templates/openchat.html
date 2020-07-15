@@ -45,7 +45,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <span id="get-username" class="nav-link">{{ username }}</span>
+                        <!-- <span id="get-username" class="nav-link">{{ username }}</span> -->
+                        <li class="nav-item">
+                            <a id="logout-btn" class="nav-link"><span
+                                    style="color: #335177">{{ username }}</span></a>
+                        </li>
                         <li class="nav-item">
                             <a id="logout-btn" class="nav-link" href="{{ url_for('logout') }}"><span
                                     style="color: #335177">Logout</span></a>
