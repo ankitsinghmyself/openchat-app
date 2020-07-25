@@ -14,12 +14,13 @@
     <!-- Custom css for prelogin pages -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main_style.css', v='15') }}">
     <script>
-    (function () {
+        (function () {
             var cookies = document.cookie.split("; ");
             for (var c = 0; c < cookies.length; c++) {
                 var d = window.location.hostname.split(".");
                 while (d.length > 0) {
-                    var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                    var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) +
+                        '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
                     var p = location.pathname.split('/');
                     document.cookie = cookieBase + '/';
                     while (p.length > 0) {
@@ -29,25 +30,40 @@
                     d.shift();
                 }
             }
-        })();</script>
-        <style>
-      
-h1.display-4 {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  position: relative;
-  animation-name: example;
-  animation-duration: 4s;
-  animation-delay: 2s;
-}
+        })();
+    </script>
+    <style>
+        h1.display-4 {
+            width: 100px;
+            height: 85px;
+            border-radius: 96px;
+            background-color: lightblue;
+            background-color: red;
+            position: relative;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-delay: 2s;
+        }
 
-@keyframes example {
-  0%   {background-color:red; left:0px; top:0px;}
-  25%  {background-color:yellow; left:200px; top:0px;}
-  50%  {background-color:blue; left:0px; top:0px;}
-  
-</style>
+        @keyframes example {
+            0% {
+                background-color: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background-color: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background-color: blue;
+                left: 0px;
+                top: 0px;
+            }
+    </style>
 </head>
 
 <body>
@@ -62,7 +78,8 @@ h1.display-4 {
         <!-- Demo image start -->
         <div id="image-section">
             <picture>
-                <img class="card" src="{{ url_for('static', filename='images/open.PNG') }}" style="border-radius: 25px;border:5px"; >
+                <img class="card" src="{{ url_for('static', filename='images/open.PNG') }}"
+                    style="border-radius: 25px;border:5px" ;>
             </picture>
         </div>
         <!-- Demo image end -->
