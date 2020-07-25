@@ -22,8 +22,17 @@
     </div>
     <div>
         {{ form.password(class_='form-control',
-            placeholder='password')}}
-
+            placeholder='password',pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")}}
+<!--  -->
+<div id="message" style="text-align: center; margin: auto; ">
+    <p>Password must be:</p>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p><br>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    <p id="specialChar" class="invalid">A <b>special Character</b></p>
+</div>
+<!--  -->
         <ul>
             {% for error in form.password.errors %}
             <li>

@@ -62,6 +62,52 @@
                 left: 0px;
                 top: 0px;
             }
+        }
+    #error {
+        color: red;
+    }
+
+    /*--------------------------------------------------------------
+        # password validation CSS
+        --------------------------------------------------------------*/
+    #message {
+        display: none;
+        color: #000;
+        position: relative;
+
+    }
+
+    #message p {
+        padding: 2px 2px;
+        font-size: 15px;
+    }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+        color: green;
+        display: inline;
+        position: relative;
+    }
+
+    .valid:before {
+        position: relative;
+        left: -2px;
+        content: "✔";
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+        color: red;
+        display: inline;
+    }
+
+    .invalid:before {
+        position: relative;
+        left: -2px;
+        content: "✖";
+    }
+    
+
     </style>
 </head>
 
