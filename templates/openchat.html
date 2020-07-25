@@ -30,7 +30,8 @@
     <div class="wrapper">
 
         <!-- Nav bar start -->
-        <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #66a1ee">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #66a1ee;
+        border-radius: 35px;">
 
             <div class="container-fluid">
                 <div id="show-sidebar-button" class="cursor-pointer">
@@ -66,7 +67,8 @@
         <div id="main-section">
 
             <!-- Sidebar start -->
-            <nav id="sidebar">
+            <nav id="sidebar" style="    border-radius: 79px;
+            padding-top: 71px;">
                 <h4>Rooms</h4>
                 {% for room in rooms %}
                 <p id="{{ room|title }}" class="select-room">{{ room|title }}</p>
@@ -78,7 +80,9 @@
             <div id="rightside-pannel">
 
                 <!-- Display message start-->
-                <div id="display-message-section">
+                <div id="display-message-section" style="    border-radius: 35px;
+                text-align: left;
+                margin-left: 697px;"> 
 
                 </div>
                 <!-- Display message end -->
