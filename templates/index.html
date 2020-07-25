@@ -7,7 +7,7 @@
 <h1>Get started</h1>
 <form action="{{ url_for('index') }}" , method="POST">
     <div>
-        {{ form.username(class_='form-control',
+        {{ form.username(class_='form-control',id='username',
             placeholder='username', autocomplete='off',
             autofocus=true,pattern="^[a-z0-9_-]{4,20}$")}}
         <ul>
@@ -68,6 +68,7 @@
 <p>Already registered? <a href={{ url_for('login') }}> Login here</a>.</p>
 <script>
     var myInput = document.getElementById("psw");
+    var myusername = document.getElementById("username");
     var letter = document.getElementById("letter");
     var capital = document.getElementById("capital");
     var number = document.getElementById("number");
@@ -84,12 +85,12 @@
         document.getElementById("message").style.display = "none";
     }
 // When the user clicks on the password field, show the message box
-myInput.onfocus = function () {
+myusername.onfocus = function () {
         document.getElementById("message1").style.display = "block";
     }
 
     // When the user clicks outside of the password field, hide the message box
-    myInput.onblur = function () {
+    myusername.onblur = function () {
         document.getElementById("message1").style.display = "none";
     }
 
