@@ -9,7 +9,7 @@
     <div>
         {{ form.username(class_='form-control',
             placeholder='username', autocomplete='off',
-            autofocus=true)}}
+            autofocus=true,pattern='/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/')}}
         <ul>
             {% for error in form.username.errors %}
             <li>
