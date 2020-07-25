@@ -9,8 +9,12 @@
     <div>
         {{ form.username(class_='form-control',
             placeholder='username', autocomplete='off',
-            autofocus=true,pattern="^[a-z0-9_-]{3,15}$")}}
+            autofocus=true,pattern="^[a-z0-9_-]{4,20}$")}}
         <ul>
+            <div id="message" style="text-align: center; margin: auto; ">
+                <p>(Note:only small letters with No space or special characters )</p>
+            </div>
+            
             {% for error in form.username.errors %}
             <li>
                 {{ error }}
