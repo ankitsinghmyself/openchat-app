@@ -11,8 +11,8 @@
             placeholder='username', autocomplete='off',
             autofocus=true,pattern="^[a-z0-9_-]{4,20}$")}}
         <ul>
-            <div id="message" style="text-align: center; margin: auto; ">
-                <p>(Note:only small letters with No space or special characters )</p>
+            <div id="message1" style="text-align: center; margin: auto; ">
+                <p>(Note:Username should be in only small letters with no space or special characters. )</p>
             </div>
             
             {% for error in form.username.errors %}
@@ -82,6 +82,15 @@
     // When the user clicks outside of the password field, hide the message box
     myInput.onblur = function () {
         document.getElementById("message").style.display = "none";
+    }
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function () {
+        document.getElementById("message1").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function () {
+        document.getElementById("message1").style.display = "none";
     }
 
     // When the user starts to type something inside the password field
